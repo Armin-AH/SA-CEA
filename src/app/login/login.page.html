@@ -1,15 +1,30 @@
-<ion-header>
+<ion-header class = "division">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title style = "font-size: 0.75rem">SA-CEA</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <input type="text" [(ngModel)]="email" />
+<ion-content >
 
-  <img src="assets/images/nameimage.png" />
+  <div class = "division">
+      
+    <img id = "uacjlogo" src="assets/uacj-logo.png" />
 
-  <button (click)="login()">
-    Iniciar sesión
-  </button>
+    <ion-item>
+      <ion-label position = "floating">Usuario</ion-label>
+      <ion-input type = "text" name = "usuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position = "floating">Contraseña</ion-label>
+        <ion-input type = "text" name = "contrasena"></ion-input>
+      </ion-item>
+
+      <br>
+
+      <ion-button expand = "block">Iniciar Sesión</ion-button>
+
+  </div>
+
 </ion-content>
