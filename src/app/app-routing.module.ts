@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'bitacoras',
-    loadChildren: () => import('./bitacora/bitacoras.module').then( m => m.BitacorasPageModule)
+    loadChildren: () => import('./bitacoras/bitacoras.module').then( m => m.BitacorasPageModule)
   },
 
 ];
