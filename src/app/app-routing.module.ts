@@ -6,6 +6,11 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'bitacoras',
+    loadChildren: () => import('./bitacora/bitacoras.module').then( m => m.BitacorasPageModule)
+  },
+
 ];
 
 @NgModule({
