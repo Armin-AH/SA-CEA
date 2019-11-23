@@ -50,6 +50,16 @@ export class BDService {
      })
    }
 
+    updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
+
+    }
+
+    deleteBitacora(id){
+      firebase.database().ref().child('Bitacora').child(id).remove();
+      
+    }
+  
+  
 
    registroCita(id,nombre,fecha,notas,carrera,motivo){
     if(id==null || id=="" || id==undefined){
@@ -65,7 +75,7 @@ export class BDService {
        })
      })
    }
+  }
 
 
 
-}

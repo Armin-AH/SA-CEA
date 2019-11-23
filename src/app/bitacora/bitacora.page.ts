@@ -36,5 +36,8 @@ export class bitacoraPage implements OnInit {
     this.listadoBitacora=this.BD.listadoBitacora();
     this.listadoBitacora=this.BD.listadobitacora
   }
+  borrar(ID){
+    this.BD.deleteBitacora(ID);
+  }
 
 }

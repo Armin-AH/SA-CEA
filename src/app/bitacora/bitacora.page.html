@@ -1,6 +1,6 @@
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 <ion-header class="main-header">
-  <nav class="nav main-nav">
+  <nav class="nav main-nav btn">
       <ul>
               <li>USUARIO</li>
               <li><a href="/cita">CITAS</a></li>
@@ -66,6 +66,13 @@
         <ion-label>{{item.Matricula}}</ion-label>
         <ion-label>{{item.Carrera}}</ion-label>
         <ion-label>{{item.Motivo}}</ion-label>
+
+        <ion-button (click)= "editar()" color ="light">Editar</ion-button>
+
+        
+        <ion-button (click)= "borrar(item.ID)" color= "danger">Borrar</ion-button>
+    
+
       </ion-item>
     </div>
 </ion-content>
