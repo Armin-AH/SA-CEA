@@ -15,21 +15,19 @@ padding: 0;
 }
 
 .contenedor {
-	width: 45%;
-	max-width:1000px;
 	margin:auto;
 }
 
 .nav {
 	background:#FAFAFA;
-	margin-bottom:-10px;
-	border-radius: 50px;
+	margin-bottom:10px;
 }
 
 .nav ul {
     list-style: none;
     margin-top:-5px;
     margin-bottom:-5px;
+    margin-left: 24%;
 	overflow: hidden;
 }
 
@@ -48,7 +46,6 @@ padding: 0;
 .nav ul li a:hover {
 	background:#777;
 	color:#FFF;
-	border-radius: 50px;
 }
 
 .main-nav {
