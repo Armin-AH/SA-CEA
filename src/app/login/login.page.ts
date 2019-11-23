@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BDService } from '../services/bd.service';
+import { NavController } from '@ionic/angular';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -6,20 +9,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  title = "Hola mundo";
-  email = "";
+  password;  email;
+  errorMessage:string; validations_form:FormGroup
 
-  constructor() { }
+  constructor(private BD: BDService, private navCtrl:NavController,
+    private formBuilder:FormBuilder) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.title = "Adios mundo :'("
-    }, 5000);
-
+    
+    this.validations_form = this.formBuilder.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])),
+    });
   }
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Email is required.' },
+      { type: 'pattern', message: 'Please enter a valid email.' }
+    ],
+    'password': [
+      { type: 'required', message: 'Password is required.' },
+      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+    ]
+  };
 
-  login() {
-    console.log(this.email);
+  loginUser(value){
+    this.BD.loginUser(value)
+    .then(res => {
+      console.log(res);
+      this.errorMessage = "";
+      this.navCtrl.navigateRoot('menu');
+    }, err => {
+      this.errorMessage = err.message;
+    })
   }
 
 }
