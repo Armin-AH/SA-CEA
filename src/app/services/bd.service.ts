@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 })
 export class BDService {
   listadobitacora=[];
+  listadocita=[];
   constructor() { }
 
   loginUser(value){
@@ -58,4 +59,23 @@ export class BDService {
       
     }
   
+  
+
+   registroCita(id,nombre,fecha,notas,carrera,motivo){
+    if(id==null || id=="" || id==undefined){
+      id= Math.floor(Math.random()*99999)+1
+    }
+    firebase.database().ref().child('Cita').child(id).update({ID:id,Nombre:nombre,Fecha:fecha,
+    Notas:notas,Carrera:carrera,Motivo:motivo})
+   }
+   listadoCita(){
+     firebase.database().ref().child('Cita').orderByChild('Fecha').once('value',ss=>{
+       ss.forEach(aa=>{
+         this.listadocita.push(aa.val()) 
+       })
+     })
+   }
   }
+
+
+

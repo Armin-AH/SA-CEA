@@ -7,24 +7,75 @@
               <li><a href="/reporte">REPORTE</a></li>
       </ul>
   </nav>
-  <!--hr-->
   <h1 class="title-name title-name-large">Citas</h1>
 </ion-header>
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 <ion-content>
-<!---->
-<section class="content-section container">
-  <h2 class="section-header">Lista de Citas</h2>
+
+    <ion-row>
+    <ion-col width-50 style="text-align: center">
+    <ion-button (click)="registrarCita()" color="success">Registrar</ion-button>
+    </ion-col>
+    </ion-row>
   
-</section>
-<!---->
+
+
+<div *ngIf="registrar">
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label>DD MMM H:mm</ion-label>
+      <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
+    </ion-item>
+      <ion-item>
+          <ion-label position="floating">Carrera</ion-label>
+          <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Motivo</ion-label>
+            <ion-input [(ngModel)]="motivo" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Notas</ion-label>
+            <ion-input [(ngModel)]="notas" type="text"></ion-input>
+        </ion-item>
+
+        <ion-row>
+        <ion-col width-50 style="text-align: center">
+        <ion-button (click)="guardar()" color="primary">Guardar</ion-button>
+        </ion-col>
+        </ion-row>
+
+  </div>
+
+  <section class="content-section container">
+  <h2 class="section-header">Lista de Citas</h2>
+  </section>
+
+    <div>
+      <ion-item color="secondary">
+        <ion-label>Nombre</ion-label>
+        <ion-label>Carrera</ion-label>
+        <ion-label>Motivo</ion-label>
+        <ion-label>Notas</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let item of listadoCita">
+        <ion-label>{{item.Nombre}}</ion-label>
+        <ion-label>{{item.Carrera}}</ion-label>
+        <ion-label>{{item.Motivo}}</ion-label>
+        <ion-label>{{item.Notas}}</ion-label>
+      </ion-item>
+    </div>
+
 </ion-content>
 
 <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
-<footer class="main-footer">
+<ion-footer class="main-footer">
   <div class="container main-footer-container">
   <h3 class="title-name">CEA</h3>
   </div>
-</footer>
+</ion-footer>
 <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
