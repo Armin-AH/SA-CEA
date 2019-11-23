@@ -1,4 +1,30 @@
 
+////////////////////////////////////////////HEADER//////////////////////////////////////////////////////
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
+.main-header {
+    background-color: rgba(231, 76, 60);
+    background-blend-mode: multiply;
+    background-size: cover;
+    padding-bottom: 30px;
+
+}
+
+.title-name {
+    text-align: center;
+    margin: 0;
+    font-size: 4em;
+    font-family: Titillium Web;
+    font-weight: normal;
+    color:white;
+}
+
+.title-name-large {
+    font-size: 8em;
+}
+////////////////////////////////////////////HEADER//////////////////////////////////////////////////////
+
+
 #division{
     max-width: 20%;
     margin-left: auto;
