@@ -67,10 +67,10 @@
         <ion-label>{{item.Carrera}}</ion-label>
         <ion-label>{{item.Motivo}}</ion-label>
 
-        <ion-button (click)= "guardar()">Editar</ion-button>
+        <ion-button (click)= "editar()">Editar</ion-button>
 
         
-        <ion-button (click)= "borrar()">Borrar</ion-button>
+        <ion-button (click)= "borrar(item.ID)">Borrar</ion-button>
     
 
       </ion-item>
