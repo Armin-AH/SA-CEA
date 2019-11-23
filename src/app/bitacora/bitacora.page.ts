@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { BDService } from '../services/bd.service';
 
 @Component({
-  selector: 'app-bitacoras',
-  templateUrl: './bitacoras.page.html',
-  styleUrls: ['./bitacoras.page.scss'],
+  selector: 'app-bitacora',
+  templateUrl: './bitacora.page.html',
+  styleUrls: ['./bitacora.page.scss'],
 })
-export class BitacorasPage implements OnInit {
+export class bitacoraPage implements OnInit {
   hoy; matricula;carrera;motivo;fecha;nombre;id="";
   listadoBitacora; registrar:Boolean=false
   constructor(private BD:BDService) { }
 
   ngOnInit() {
     console.log(this.listadoBitacora)
-    this.listadoBitacoras()
+    this.listadobitacora()
   }
 
   guardar(){
@@ -25,16 +25,16 @@ export class BitacorasPage implements OnInit {
     this.motivo="";this.fecha="";
     this.nombre="";
     this.registrar=false
-    this.listadoBitacoras()
+    this.listadobitacora()
   }
   registrarBitacora(){
     this.registrar=true
   }
-  listadoBitacoras(){
-    this.BD.listadoBitacoras=[]
+  listadobitacora(){
+    this.BD.listadobitacora=[]
     this.hoy= new Date().getFullYear()
     this.listadoBitacora=this.BD.listadoBitacora();
-    this.listadoBitacora=this.BD.listadoBitacoras
+    this.listadoBitacora=this.BD.listadobitacora
   }
 
 }

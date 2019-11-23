@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BitacoraPageRoutingModule } from './bitacora-routing.module';
+import { bitacoraPageRoutingModule } from './bitacora-routing.module';
 
-import { BitacoraPage } from './bitacora.page';
+import { bitacoraPage } from './bitacora.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BitacoraPageRoutingModule
+    bitacoraPageRoutingModule
   ],
-  declarations: [BitacoraPage]
+  declarations: [bitacoraPage]
 })
-export class BitacoraPageModule {}
+export class bitacoraPageModule {}

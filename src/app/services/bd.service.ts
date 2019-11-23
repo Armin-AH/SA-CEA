@@ -5,7 +5,7 @@ import * as firebase from 'firebase'
   providedIn: 'root'
 })
 export class BDService {
-  listadoBitacoras=[];
+  listadobitacora=[];
   constructor() { }
 
   loginUser(value){
@@ -44,7 +44,7 @@ export class BDService {
    listadoBitacora(){
      firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
        ss.forEach(aa=>{
-         this.listadoBitacoras.push(aa.val()) 
+         this.listadobitacora.push(aa.val()) 
        })
      })
    }

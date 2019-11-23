@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule) },
   { path: 'cita', loadChildren: () => import('./cita/cita.module').then( m => m.CitaPageModule) },
   { path: 'reporte', loadChildren: () => import('./reporte/reporte.module').then( m => m.ReportePageModule) },
-  { path: 'bitacora', loadChildren: () => import('./bitacora/bitacora.module').then( m => m.BitacoraPageModule) },
+  { path: 'bitacora', loadChildren: () => import('./bitacora/bitacora.module').then( m => m.bitacoraPageModule) },
 
 
 ];
