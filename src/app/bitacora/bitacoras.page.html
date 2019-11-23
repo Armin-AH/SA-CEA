@@ -1,16 +1,16 @@
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 <ion-header class="main-header">
   <nav class="nav main-nav">
       <ul>
-              <li><a href="">USUARIO</a></li>
+              <li>USUARIO</li>
               <li><a href="/cita">CITAS</a></li>
-              <li><a href="/menu">MENU</a></li>
               <li><a href="/reporte">REPORTE</a></li>
       </ul>
   </nav>
-  <!--hr-->
-  <h1 class="title-name title-name-large" color="primary">Bitacora</h1>
-</ion-header>
 
+  <h1 class="title-name title-name-large">Bitacora</h1>
+</ion-header>
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 <ion-content>
   <ion-button (click)="registrarBitacora()">Registrar</ion-button>
   <div *ngIf="registrar">
@@ -52,3 +52,11 @@
       </ion-item>
     </div>
 </ion-content>
+
+<!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
+<footer class="main-footer">
+  <div class="container main-footer-container">
+  <h3 class="title-name">CEA</h3>
+  </div>
+</footer>
+<!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
