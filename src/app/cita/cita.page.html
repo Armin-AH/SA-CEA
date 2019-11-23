@@ -16,9 +16,49 @@
 <!---->
 <section class="content-section container">
   <h2 class="section-header">Lista de Citas</h2>
-  
 </section>
 <!---->
+
+<ion-button (click)="registrarCita()">Registrar</ion-button>
+  <div *ngIf="registrar">
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label>DD MMM H:mm</ion-label>
+      <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
+    </ion-item>
+      <ion-item>
+          <ion-label position="floating">Carrera</ion-label>
+          <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Motivo</ion-label>
+            <ion-input [(ngModel)]="motivo" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Notas</ion-label>
+            <ion-input [(ngModel)]="notas" type="text"></ion-input>
+        </ion-item>
+
+    <ion-button (click)="guardar()" color="primary">Guardame esta</ion-button>
+  </div>
+    <div>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-label>Carrera</ion-label>
+        <ion-label>Motivo</ion-label>
+        <ion-label>Notas</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let item of listadoCita">
+        <ion-label>{{item.Nombre}}</ion-label>
+        <ion-label>{{item.Carrera}}</ion-label>
+        <ion-label>{{item.Motivo}}</ion-label>
+        <ion-label>{{item.Notas}}</ion-label>
+      </ion-item>
+    </div>
+
 </ion-content>
 
 <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
