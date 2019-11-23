@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { environment } from '../environments/environment';
-import *as firebase from 'firebase'
+import * as firebase from 'firebase'
 
 firebase.initializeApp(environment.firebaseConfig)
 
