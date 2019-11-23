@@ -14,19 +14,41 @@ margin:0;
 padding: 0;
 }
 
-.nav ul{
-    margin: 0;
+.contenedor {
+	width: 45%;
+	max-width:1000px;
+	margin:auto;
 }
 
-.nav li {
-    display: inline;
+.nav {
+	background:#FAFAFA;
+	margin-bottom:-10px;
+	border-radius: 50px;
 }
 
-.nav a {
-    display: inline-block;
-    padding: .3em;
-    color:white;
-    text-decoration: none;
+.nav ul {
+    list-style: none;
+    margin-top:-5px;
+    margin-bottom:-5px;
+	overflow: hidden;
+}
+
+.nav ul li {
+    float: left;
+	margin-left:25px;
+}
+
+.nav ul li a {
+	display: block;
+	padding:20px;
+	color:#000;
+	text-decoration: none;
+}
+
+.nav ul li a:hover {
+	background:#777;
+	color:#FFF;
+	border-radius: 50px;
 }
 
 .main-nav {
