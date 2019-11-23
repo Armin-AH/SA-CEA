@@ -9,25 +9,10 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  password;  email;
-  errorMessage:string; validations_form:FormGroup
-
-  constructor(private BD: BDService, private navCtrl:NavController,
-    private formBuilder:FormBuilder) { }
-
-  ngOnInit() {
-    
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
-      ])),
-    });
-  }
+  password: string;
+  email: string;
+  errorMessage: string;
+  validations_form: FormGroup;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -39,6 +24,25 @@ export class LoginPage implements OnInit {
     ]
   };
 
+  constructor(
+    private BD: BDService,
+    private navCtrl: NavController,
+    private formBuilder: FormBuilder,
+  ) { }
+
+  ngOnInit() {
+    this.validations_form = this.formBuilder.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])),
+    });
+  }
+
   loginUser(value){
     this.BD.loginUser(value)
     .then(res => {
@@ -47,7 +51,7 @@ export class LoginPage implements OnInit {
       this.navCtrl.navigateRoot('cita');
     }, err => {
       this.errorMessage = err.message;
-    })
+    });
   }
 
 }
