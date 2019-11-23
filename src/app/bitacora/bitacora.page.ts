@@ -8,7 +8,7 @@ import { BDService } from '../services/bd.service';
 })
 export class bitacoraPage implements OnInit {
   hoy; matricula;carrera;motivo;fecha;nombre;id="";
-  listadoBitacora; registrar:Boolean=false
+  listadoBitacora; registrar:Boolean=false;Editar:Boolean=false;
   constructor(private BD:BDService) { }
 
   ngOnInit() {
@@ -38,6 +38,19 @@ export class bitacoraPage implements OnInit {
   }
   borrar(ID){
     this.BD.deleteBitacora(ID);
+    console.log(this.listadoBitacora)
+    this.listadobitacora()
+  }
+
+  editar(ID){
+  this.BD.updateBitacora(ID,this.nombre,this.fecha,this.matricula,this.carrera,this.motivo)
+  this.Editar=false
+  console.log(this.listadoBitacora)
+  this.listadobitacora()
+  }
+
+  editobitacora(){
+    this.Editar=true
   }
 
 }

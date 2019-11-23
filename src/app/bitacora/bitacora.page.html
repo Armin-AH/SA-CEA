@@ -66,12 +66,42 @@
         <ion-label>{{item.Matricula}}</ion-label>
         <ion-label>{{item.Carrera}}</ion-label>
         <ion-label>{{item.Motivo}}</ion-label>
+<!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
+        <ion-button (click) = "editobitacora()" color ="light">Editar</ion-button>
+        <div *ngIf="Editar">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>DD MMM H:mm</ion-label>
+              <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Matricula</ion-label>
+                <ion-input [(ngModel)]="matricula" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Carrera</ion-label>
+                  <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Motivo</ion-label>
+                    <ion-input [(ngModel)]="motivo" type="text"></ion-input>
+                  </ion-item>
+                  
+                  <ion-row>
+                  <ion-col width-50 style="text-align: center">
+            <ion-button (click)="editar(item.ID)" color="primary">Guardar</ion-button>
+                  </ion-col>
+                  </ion-row>
+          </div>
+<!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
 
-        <ion-button (click)= "editar()" color ="light">Editar</ion-button>
-
+  <!--////////////////////////////////////////////Boton Borrar//////////////////////////////////////////////////////-->
         
         <ion-button (click)= "borrar(item.ID)" color= "danger">Borrar</ion-button>
-    
+    <!--////////////////////////////////////////////Boton Borrar//////////////////////////////////////////////////////-->
 
       </ion-item>
     </div>
