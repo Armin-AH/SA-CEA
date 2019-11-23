@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
     .then(res => {
       console.log(res);
       this.errorMessage = "";
-      this.navCtrl.navigateRoot('menu');
+      this.navCtrl.navigateRoot('cita');
     }, err => {
       this.errorMessage = err.message;
     })
