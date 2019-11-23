@@ -13,14 +13,16 @@
 <!--//////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 <ion-content>
-<!---->
-<section class="content-section container">
-  <h2 class="section-header">Lista de Citas</h2>
-</section>
-<!---->
 
-<ion-button (click)="registrarCita()">Registrar</ion-button>
-  <div *ngIf="registrar">
+    <ion-row>
+    <ion-col width-50 style="text-align: center">
+    <ion-button (click)="registrarCita()" color="success">Registrar</ion-button>
+    </ion-col>
+    </ion-row>
+  
+
+
+<div *ngIf="registrar">
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
     <ion-input [(ngModel)]="nombre" type="text"></ion-input>
@@ -42,8 +44,18 @@
             <ion-input [(ngModel)]="notas" type="text"></ion-input>
         </ion-item>
 
-    <ion-button (click)="guardar()" color="primary">Guardame esta</ion-button>
+        <ion-row>
+        <ion-col width-50 style="text-align: center">
+        <ion-button (click)="guardar()" color="primary">Guardar</ion-button>
+        </ion-col>
+        </ion-row>
+
   </div>
+
+  <section class="content-section container">
+  <h2 class="section-header">Lista de Citas</h2>
+  </section>
+
     <div>
       <ion-item>
         <ion-label>Nombre</ion-label>
