@@ -17,8 +17,8 @@
     <ion-button (click)="registrarBitacora()" color="danger">Registrar</ion-button>
     </ion-col>
     </ion-row>
-    
-    
+
+
     <div *ngIf="registrar">
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
@@ -40,7 +40,7 @@
             <ion-label position="floating">Motivo</ion-label>
             <ion-input [(ngModel)]="motivo" type="text"></ion-input>
           </ion-item>
-          
+
           <ion-row>
           <ion-col width-50 style="text-align: center">
     <ion-button (click)="guardar()" color="primary">Guardar</ion-button>
@@ -48,12 +48,12 @@
           </ion-row>
   </div>
 
-  
+
   <section class="content-section container">
   <h2 class="section-header">Lista de Citas</h2>
   </section>
-      
-  
+
+
     <div class="content-section container">
       <ion-item color="primary">
         <ion-label>Nombre</ion-label>
@@ -63,44 +63,41 @@
         <ion-label><br></ion-label>
       </ion-item>
       <ion-item *ngFor="let item of listadoBitacora">
-        <ion-label>{{item.Nombre}}</ion-label>
-        <ion-label>{{item.Matricula}}</ion-label>
-        <ion-label>{{item.Carrera}}</ion-label>
-        <ion-label>{{item.Motivo}}</ion-label>
+        <ion-label>{{ item.Nombre }}</ion-label>
+        <ion-label>{{ item.Matricula }}</ion-label>
+        <ion-label>{{ item.Carrera }}</ion-label>
+        <ion-label>{{ item.Motivo }}</ion-label>
 <!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
-        <ion-button (click) = "editobitacora()" color ="light">Editar</ion-button>
-        <div *ngIf="Editar">
+        <ion-button (click)="editobitacora(item)" color ="light">Editar</ion-button>
+        <div *ngIf="Editar && item === selectedItem">
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
             <ion-input [(ngModel)]="nombre" type="text"></ion-input>
           </ion-item>
           <ion-item>
-              <ion-label>DD MMM H:mm</ion-label>
-              <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Matricula</ion-label>
-                <ion-input [(ngModel)]="matricula" type="text"></ion-input>
-              </ion-item>
-              <ion-item>
-                  <ion-label position="floating">Carrera</ion-label>
-                  <ion-input [(ngModel)]="carrera" type="text"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label position="floating">Motivo</ion-label>
-                    <ion-input [(ngModel)]="motivo" type="text"></ion-input>
-                  </ion-item>
-                  
-                  <ion-row>
-                  <ion-col width-50 style="text-align: center">
-            <ion-button (click)="editar(item.ID)" color="primary">Guardar</ion-button>
-                  </ion-col>
-                  </ion-row>
-          </div>
-<!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
- 
-    
+            <ion-label>DD MMM H:mm</ion-label>
+            <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Matricula</ion-label>
+            <ion-input [(ngModel)]="matricula" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Carrera</ion-label>
+            <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Motivo</ion-label>
+            <ion-input [(ngModel)]="motivo" type="text"></ion-input>
+          </ion-item>
 
+          <ion-row>
+            <ion-col width-50 style="text-align: center">
+              <ion-button (click)="editar(item.ID)" color="primary">Guardar</ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+<!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
       </ion-item>
     </div>
 </ion-content>

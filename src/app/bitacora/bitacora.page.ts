@@ -17,6 +17,7 @@ export class bitacoraPage implements OnInit {
   listadoBitacora: JSON[];
   registrar: boolean = false;
   Editar: boolean = false;
+  selectedItem;
 
   constructor(private BD: BDService) { }
 
@@ -58,13 +59,14 @@ export class bitacoraPage implements OnInit {
   }
 
   editar(ID: string) {
-  this.BD.updateBitacora(ID, this.nombre, this.fecha, this.matricula, this.carrera, this.motivo);
-  this.Editar = false;
-  console.log(this.listadoBitacora);
-  this.listadobitacora();
+    this.BD.updateBitacora(ID, this.nombre, this.fecha, this.matricula, this.carrera, this.motivo);
+    this.Editar = false;
+    console.log(this.listadoBitacora);
+    this.listadobitacora();
   }
 
-  editobitacora() {
+  editobitacora(item) {
+    this.selectedItem = item;
     this.Editar = true;
   }
 
