@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BDService } from '../services/bd.service';
 import { FormGroup } from '@angular/forms';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators} from '@angular/forms';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-bitacora',
@@ -23,36 +25,37 @@ export class bitacoraPage implements OnInit {
   errorMessage: string;
   validation_form: FormGroup;
   validation_messages = {
-    'Nombre' :[
+    'nombre' :[
       {type: 'required', message: 'Requiere llenar este campo.'},
       {type: 'pattern', message: 'Ingrese un nombre valido'}
     ],
-    'Matricula' :[
+    'matricula' :[
       {type: 'required', message: 'Requiere llenar este campo.'},
       {type: 'pattern', message: 'Ingrese una matricula valida'}
     ],
-    'Carrera' :[
+    'carrera' :[
       {type: 'required', message: 'Requiere llenar este campo.'},
       {type: 'pattern', message: 'Ingrese una carrera valida'}
     ],
-    'Motivo' :[
+    'motivo' :[
       {type: 'required', message: 'Requiere llenar este campo.'},
       {type: 'pattern', message: 'Ingrese un motivo valido'}
-    ],
+    ]
 
   }
 
-  constructor(private BD: BDService,private formBuilder: FormBuilder,) { }
+  constructor(private BD: BDService,private formBuilder: FormBuilder, private navCtrl: NavController,) { }
 
   ngOnInit() {
 
     this.validation_form = this.formBuilder.group({
       nombre: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern('[a-zA-Z]'),
       ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
+      matricula: new FormControl('', Validators.compose([
+        Validators.maxLength(6),
+        Validators.pattern('[0-9]'),
         Validators.required
       ])),
     });
