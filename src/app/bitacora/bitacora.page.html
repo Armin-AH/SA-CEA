@@ -55,14 +55,14 @@
   <h2 class="section-header">Lista de Bitacora</h2>
   </section>
 
-  <div class="content-section container">
+  <div class="content-section container-lista">
     <ion-item color="primary">
       <ion-label>Nombre</ion-label>
       <ion-label>Fecha</ion-label>
       <ion-label>Matricula</ion-label>
       <ion-label>Carrera</ion-label>
       <ion-label>Motivo</ion-label>
-      <ion-label><br></ion-label>
+      <ion-label><br></ion-label><ion-label><br></ion-label>
     </ion-item>
     <ion-item *ngFor="let item of listadoBitacora">
       <ion-label>{{ item.Nombre }}</ion-label>
@@ -71,6 +71,7 @@
       <ion-label>{{ item.Carrera }}</ion-label>
       <ion-label>{{ item.Motivo }}</ion-label>
 <!--////////////////////////////////////////////Boton editar//////////////////////////////////////////////////////-->
+<ion-label>
     <ion-button (click)="editobitacora(item)" color ="light">Editar</ion-button>
       <div *ngIf="Editar && item === selectedItem">
         <ion-item>
@@ -106,7 +107,7 @@
 <!--////////////////////////////////////////////Boton borrar//////////////////////////////////////////////////////-->
 
     <ion-button (click)="borrar(item.ID)" color="danger">Borrar</ion-button>
-
+    </ion-label>
 <!--////////////////////////////////////////////Boton borrar//////////////////////////////////////////////////////-->
     </ion-item>
   </div>
