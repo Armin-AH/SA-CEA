@@ -31,7 +31,6 @@ export class CitaPage implements OnInit {
 
 //////////////////////////////////////////////CRUD CITAS////////////////////////////////////////////////
   ngOnInit() {
-    console.log(this.listadoCita)
     this.listadocita()
 
     
@@ -61,16 +60,12 @@ export class CitaPage implements OnInit {
     this.hoy = new Date().getFullYear();
     this.BD.listadoCita();
     this.listadoCita = this.BD.listadocita;
-    console.log(this.listadoCita);
 
-    
+    console.log(this.listadoCita)
+    this.listadoCita.forEach(ss=>{
+      
+    })
 
-    this.a = this.listadoCita[1]
-    console.log(this.listadoCita[1]);
-
-    /*for(this.i = this.listadoCita.length; this.i++; ){
-      if(this.listadoCita[1].fecha > "2019-11-29T16:00:25.232-07:00" && this.listadoCita.[this.i].fecha <= "2019-11-30T16:00:25.232-07:00")
-    }*/
   }
   //////////////////////////////////////////////CRUD CITAS////////////////////////////////////////////////
 
