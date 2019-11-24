@@ -20,6 +20,7 @@ export class CitaPage implements OnInit {
   nombre: string;
   id = '';
   registrar = false;
+  mostrartodas = false;
   Editar: boolean = false;
   selectedItem;
 
@@ -98,6 +99,17 @@ export class CitaPage implements OnInit {
     //console.log(this.listadoCitaStr)
   }
 
+  listadoCitaTotal(){
+
+    this.mostrartodas = true;
+
+    this.BD.listadocita = [];
+    this.hoy = new Date().getFullYear();
+    this.BD.listadoCita();
+    this.listadoCita = this.BD.listadocita;
+
+  }
+
   borrar(ID: string) {
     this.BD.deleteCita(ID);
     //console.log(this.listadocita);
@@ -163,6 +175,16 @@ export class CitaPage implements OnInit {
     //console.log(ev);
     //console.log(typeof ev)
   };
+
+  next() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+   
+  back() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
 
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
 

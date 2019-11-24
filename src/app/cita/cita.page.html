@@ -52,11 +52,27 @@
 
 <!--////////////////////////////////////////////CALENDARIO////////////////////////////////////////////-->
 
-      <ion-col size="12" text-center>
-        <ion-title>
-          {{viewTitle}}
-        </ion-title>
-      </ion-col>
+<ion-row>
+
+  <ion-col size="4" text-center>
+    <ion-button fill="clear" (click)="back()">
+      <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-col>
+
+  <ion-col size="4" text-center>
+    <ion-title>
+      {{viewTitle}}
+    </ion-title>
+  </ion-col>
+
+  <ion-col size="4" text-center>
+    <ion-button fill="clear" (click)="next()">
+      <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-col>
+
+</ion-row>
       <!---->
     <calendar
     [eventSource]="eventSource"
@@ -128,9 +144,69 @@
       </ion-label>
       </ion-item>
     </div>
+
+
     <div class="text-center" *ngIf="listadoCita && listadoCita.length === 0">
       No se encontraron citas para la fecha seleccionada
     </div>
+
+    <br>
+    <div class="text-center">
+      <ion-button (click)="listadoCitaTotal()" color="primary">Mostrar todas las citas</ion-button>
+      <div *ngIf="registrar">
+        <div class="content-section container-lista" *ngIf="listadoCita && listadoCita.length > 0">
+          <ion-item color="secondary">
+            <ion-label>Nombre</ion-label>
+            <ion-label>Fecha</ion-label>
+            <ion-label>Carrera</ion-label>
+            <ion-label>Motivo</ion-label>
+            <ion-label>Notas</ion-label>
+            <ion-label><br></ion-label>
+          </ion-item>
+          <ion-item *ngFor="let item of listadoCita">
+            <ion-label>{{item.Nombre}}</ion-label>
+            <ion-label>{{item.Fecha}}</ion-label>
+            <ion-label>{{item.Carrera}}</ion-label>
+            <ion-label>{{item.Motivo}}</ion-label>
+            <ion-label>{{item.Notas}}</ion-label>
+          <ion-label>
+            <ion-button (click)="editocita(item)" color ="light">Editar</ion-button>
+            <div *ngIf="Editar && item === selectedItem">
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>DD MMM H:mm</ion-label>
+                <ion-datetime displayFormat="D MMM H:mm" [(ngModel)]="fecha"></ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Carrera</ion-label>
+                <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Motivo</ion-label>
+                <ion-input [(ngModel)]="motivo" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Notas</ion-label>
+                <ion-input [(ngModel)]="notas" type="text"></ion-input>
+              </ion-item>
+    
+              <ion-row>
+                <ion-col width-50 style="text-align: center">
+                  <ion-button (click)="editar(item.ID)" color="primary">Guardar</ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
+    
+            <ion-button (click)="borrar(item.ID)" color="danger">Borrar</ion-button>
+          </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
