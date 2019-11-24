@@ -48,7 +48,7 @@ export class bitacoraPage implements OnInit {
 
   ngOnInit() {
 
-    this.validation_form = this.formBuilder.group({
+    /*this.validation_form = this.formBuilder.group({
       nombre: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('[a-zA-Z]'),
@@ -58,7 +58,7 @@ export class bitacoraPage implements OnInit {
         Validators.pattern('[0-9]'),
         Validators.required
       ])),
-    });
+    });*/
 
     console.log(this.listadoBitacora);
     this.listadobitacora();

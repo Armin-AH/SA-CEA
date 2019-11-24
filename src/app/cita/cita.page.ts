@@ -12,7 +12,6 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./cita.page.scss'],
 })
 export class CitaPage implements OnInit {
-  fechaselec;
   hoy: number;
   notas: string;
   carrera: string;
@@ -21,10 +20,9 @@ export class CitaPage implements OnInit {
   nombre: string;
   id = '';
   listadoCita: JSON[];
-  listadoActual: JSON[];
   registrar = false; 
-  i: number = 0;
-  a;
+  Editar: boolean = false;
+  selectedItem;
 
   constructor(private BD:BDService, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
   //constructor(private BD:BDService) { }
@@ -67,6 +65,36 @@ export class CitaPage implements OnInit {
     })
 
   }
+
+  borrar(ID: string) {
+    this.BD.deleteCita(ID);
+    console.log(this.listadocita);
+    this.listadocita();
+
+    this.nombre = ''
+    this.fecha = ''
+    this.carrera = ''
+    this.motivo = ''
+    this.notas = ''
+
+  }
+
+  editar(ID: string) {
+    this.BD.updateCita(ID, this.nombre, this.fecha, this.carrera, this.motivo, this.notas);
+    this.Editar = false;
+    console.log(this.listadoCita);
+    this.listadocita();
+    this.nombre = '';
+    this.fecha = '';
+    this.carrera = '';
+    this.motivo = '';
+    this.notas = '';
+  }
+
+  editocita(item) {
+    this.selectedItem = item;
+    this.Editar = true;
+  }
   //////////////////////////////////////////////CRUD CITAS////////////////////////////////////////////////
 
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
@@ -97,11 +125,8 @@ export class CitaPage implements OnInit {
   }
 
   onCurrentDateChanged = (ev: Date) => {
-    //console.log(ev);
-    //console.log(typeof ev)
-    this.fechaselec = ev
-    //console.log(this.fechaselec);
-
+    console.log(ev);
+    console.log(typeof ev)
   };
 
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
