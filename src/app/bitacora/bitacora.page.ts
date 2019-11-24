@@ -63,6 +63,11 @@ export class bitacoraPage implements OnInit {
     this.Editar = false;
     console.log(this.listadoBitacora);
     this.listadobitacora();
+    this.nombre = '';
+    this.fecha = '';
+    this.matricula = '';
+    this.carrera = '';
+    this.motivo = '';
   }
 
   editobitacora(item) {
