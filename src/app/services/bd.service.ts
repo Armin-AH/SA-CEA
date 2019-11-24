@@ -52,7 +52,7 @@ export class BDService {
   }
 
   updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
-    firebase.database().ref().child('Bitacora').child(id).set({Nombre:nombre,Fecha:fecha,
+    firebase.database().ref().child('Bitacora').child(id).set({ID:id,Nombre:nombre,Fecha:fecha,
       Matricula:matricula,Carrera:carrera,Motivo:motivo})
   }
 
@@ -74,5 +74,13 @@ export class BDService {
         this.listadocita.push(aa.val())
       });
     });
+  }
+  updateCita(id,nombre,fecha,carrera,motivo,notas){
+    firebase.database().ref().child('Cita').child(id).set({ID:id,Nombre:nombre,Fecha:fecha,
+      Notas:notas,Carrera:carrera,Motivo:motivo})
+  }
+
+  deleteCita(id){
+    firebase.database().ref().child('Cita').child(id).remove();
   }
 }
