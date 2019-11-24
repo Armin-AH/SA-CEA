@@ -42,8 +42,8 @@ export class bitacoraPage implements OnInit {
     this.listadobitacora()
   }
 
-  editar(ID){
-  this.BD.updateBitacora(ID,this.nombre,this.fecha,this.matricula,this.carrera,this.motivo)
+  editar(ID,Nombre,Fecha,Matricula,Carrera,Motivo){
+  this.BD.updateBitacora(ID,Nombre,Fecha,Matricula,Carrera,Motivo)
   this.Editar=false
   console.log(this.listadoBitacora)
   this.listadobitacora()

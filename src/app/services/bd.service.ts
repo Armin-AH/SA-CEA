@@ -51,7 +51,7 @@ export class BDService {
    }
 
     updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
-      firebase.database().ref().child('Bitacora').child(id).set({Nombre:nombre,Fecha:fecha,
+      firebase.database().ref().child('Bitacora').child(id).set({ID:id,Nombre:nombre,Fecha:fecha,
         Matricula:matricula,Carrera:carrera,Motivo:motivo})
     }
 
