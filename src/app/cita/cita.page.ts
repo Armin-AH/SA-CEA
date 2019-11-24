@@ -7,34 +7,47 @@ import { BDService } from '../services/bd.service';
   styleUrls: ['./cita.page.scss'],
 })
 export class CitaPage implements OnInit {
-  hoy; notas;carrera;motivo;fecha;nombre;id="";
-  listadoCita; registrar:Boolean=false
-  constructor(private BD:BDService) { }
+  hoy: number;
+  notas: string;
+  carrera: string;
+  motivo: string;
+  fecha: string;
+  nombre: string;
+  id = '';
+  listadoCita: JSON[];
+  registrar = false;
+
+  constructor(private BD: BDService) { }
 
   ngOnInit() {
-    console.log(this.listadoCita)
-    this.listadocita()
+    console.log(this.listadoCita);
+    this.listadocita();
   }
 
-  guardar(){
-    this.BD.registroCita(this.id,this.nombre,this.fecha,this.notas,this.carrera,this.motivo)
+  guardar() {
+    this.BD.registroCita(this.id, this.nombre, this.fecha, this.notas, this.carrera, this.motivo);
     this.limpiar();
   }
-  limpiar(){
-    this.notas="";this.carrera=""
-    this.motivo="";this.fecha="";
-    this.nombre="";
-    this.registrar=false
-    this.listadocita()
+
+  limpiar() {
+    this.notas = '';
+    this.carrera= '';
+    this.motivo = '';
+    this.fecha = '';
+    this.nombre = '';
+    this.registrar = false;
+    this.listadocita();
   }
-  registrarCita(){
-    this.registrar=true
+
+  registrarCita() {
+    this.registrar = true;
   }
-  listadocita(){
-    this.BD.listadocita=[]
-    this.hoy= new Date().getFullYear()
-    this.listadoCita=this.BD.listadoCita();
-    this.listadoCita=this.BD.listadocita
+
+  listadocita() {
+    this.BD.listadocita = [];
+    this.hoy = new Date().getFullYear();
+    this.BD.listadoCita();
+    this.listadoCita = this.BD.listadocita;
   }
 
 }

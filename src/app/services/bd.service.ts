@@ -5,8 +5,9 @@ import * as firebase from 'firebase'
   providedIn: 'root'
 })
 export class BDService {
-  listadobitacora=[];
-  listadocita=[];
+  listadobitacora: JSON[] = [];
+  listadocita: JSON[] = [];
+
   constructor() { }
 
   loginUser(value){
@@ -16,12 +17,11 @@ export class BDService {
         .then(
           res => resolve(res),
           err => reject(err))
-        })
-    })
-    
-   }
-  
-   logoutUser(){
+        });
+    });
+  }
+
+  logoutUser() {
      return new Promise((resolve, reject) => {
        if(firebase.auth().currentUser){
          firebase.auth().signOut()
@@ -32,50 +32,47 @@ export class BDService {
            reject();
          });
        }
-     })
-   }
+     });
+  }
 
-   registroBitacora(id,nombre,fecha,matricula,carrera,motivo){
+  registroBitacora(id,nombre,fecha,matricula,carrera,motivo){
     if(id==null || id=="" || id==undefined){
       id= Math.floor(Math.random()*99999)+1
     }
     firebase.database().ref().child('Bitacora').child(id).update({ID:id,Nombre:nombre,Fecha:fecha,
     Matricula:matricula,Carrera:carrera,Motivo:motivo})
-   }
-   listadoBitacora(){
+  }
+
+  listadoBitacora(){
      firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
        ss.forEach(aa=>{
-         this.listadobitacora.push(aa.val()) 
+         this.listadobitacora.push(aa.val())
        })
      })
-   }
+  }
 
-    updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
+  updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
+    firebase.database().ref().child('Bitacora').child(id).set({Nombre:nombre,Fecha:fecha,
+      Matricula:matricula,Carrera:carrera,Motivo:motivo})
+  }
 
-    }
+  deleteBitacora(id){
+    firebase.database().ref().child('Bitacora').child(id).remove();
+  }
 
-    deleteBitacora(id){
-      firebase.database().ref().child('Bitacora').child(id).remove();
-      
-    }
-  
-  
-
-   registroCita(id,nombre,fecha,notas,carrera,motivo){
+  registroCita(id,nombre,fecha,notas,carrera,motivo) {
     if(id==null || id=="" || id==undefined){
       id= Math.floor(Math.random()*99999)+1
     }
     firebase.database().ref().child('Cita').child(id).update({ID:id,Nombre:nombre,Fecha:fecha,
     Notas:notas,Carrera:carrera,Motivo:motivo})
-   }
-   listadoCita(){
-     firebase.database().ref().child('Cita').orderByChild('Fecha').once('value',ss=>{
-       ss.forEach(aa=>{
-         this.listadocita.push(aa.val()) 
-       })
-     })
-   }
   }
 
-
-
+  listadoCita() {
+    firebase.database().ref().child('Cita').orderByChild('Fecha').once('value', ss =>{
+      ss.forEach(aa=>{
+        this.listadocita.push(aa.val())
+      });
+    });
+  }
+}
