@@ -19,7 +19,6 @@ export class bitacoraPage implements OnInit {
   nombre: string;
   id = '';
   listadoBitacora: any[];
-  registrar: boolean = false;
   Editar: boolean = false;
   selectedItem;
   errorMessage: string;
@@ -75,12 +74,7 @@ export class bitacoraPage implements OnInit {
     this.motivo = '';
     this.fecha = '';
     this.nombre = '';
-    this.registrar = false;
     this.listadobitacora();
-  }
-
-  registrarBitacora() {
-    this.registrar = true;
   }
 
   listadobitacora() {

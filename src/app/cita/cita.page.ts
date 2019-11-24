@@ -19,7 +19,6 @@ export class CitaPage implements OnInit {
   fecha: string;
   nombre: string;
   id = '';
-  registrar = false;
   mostrartodas = false;
   Editar: boolean = false;
   selectedItem;
@@ -56,12 +55,7 @@ export class CitaPage implements OnInit {
     this.motivo = '';
     this.fecha = '';
     this.nombre = '';
-    this.registrar = false;
     this.listadocita();
-  }
-
-  registrarCita() {
-    this.registrar = true;
   }
 
   listadocita() {

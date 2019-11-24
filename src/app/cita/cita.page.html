@@ -15,11 +15,11 @@
 <!--/////////////////////////////////////////////REGISTRAR CITAS//////////////////////////////////////////-->
     <ion-row>
     <ion-col width-50 style="text-align: center">
-    <ion-button (click)="registrarCita()" color="success">Registrar</ion-button>
+    <ion-button (click)="oculto = !oculto" color="success">Registrar</ion-button>
     </ion-col>
     </ion-row>
 
-<div *ngIf="registrar">
+<div *ngIf="oculto">
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
     <ion-input [(ngModel)]="nombre" type="text"></ion-input>
