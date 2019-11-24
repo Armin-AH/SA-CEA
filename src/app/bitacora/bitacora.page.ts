@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BDService } from '../services/bd.service';
 import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bitacora',
@@ -19,6 +20,7 @@ export class bitacoraPage implements OnInit {
   registrar: boolean = false;
   Editar: boolean = false;
   selectedItem;
+  errorMessage: string;
   validation_form: FormGroup;
   validation_messages = {
     'Nombre' :[
@@ -40,9 +42,21 @@ export class bitacoraPage implements OnInit {
 
   }
 
-  constructor(private BD: BDService) { }
+  constructor(private BD: BDService,private formBuilder: FormBuilder,) { }
 
   ngOnInit() {
+
+    this.validation_form = this.formBuilder.group({
+      nombre: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])),
+    });
+
     console.log(this.listadoBitacora);
     this.listadobitacora();
   }
