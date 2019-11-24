@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BDService } from '../services/bd.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bitacora',
@@ -18,6 +19,26 @@ export class bitacoraPage implements OnInit {
   registrar: boolean = false;
   Editar: boolean = false;
   selectedItem;
+  validation_form: FormGroup;
+  validation_messages = {
+    'Nombre' :[
+      {type: 'required', message: 'Requiere llenar este campo.'},
+      {type: 'pattern', message: 'Ingrese un nombre valido'}
+    ],
+    'Matricula' :[
+      {type: 'required', message: 'Requiere llenar este campo.'},
+      {type: 'pattern', message: 'Ingrese una matricula valida'}
+    ],
+    'Carrera' :[
+      {type: 'required', message: 'Requiere llenar este campo.'},
+      {type: 'pattern', message: 'Ingrese una carrera valida'}
+    ],
+    'Motivo' :[
+      {type: 'required', message: 'Requiere llenar este campo.'},
+      {type: 'pattern', message: 'Ingrese un motivo valido'}
+    ],
+
+  }
 
   constructor(private BD: BDService) { }
 
@@ -56,6 +77,13 @@ export class bitacoraPage implements OnInit {
     this.BD.deleteBitacora(ID);
     console.log(this.listadoBitacora);
     this.listadobitacora();
+
+    this.nombre = ''
+    this.fecha = ''
+    this.matricula = ''
+    this.carrera = ''
+    this.motivo = ''
+
   }
 
   editar(ID: string) {
