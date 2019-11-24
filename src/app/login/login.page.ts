@@ -13,7 +13,7 @@ export class LoginPage implements OnInit {
   email: string;
   errorMessage: string;
   validations_form: FormGroup;
-  validation_messages: JSON = {
+  validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Please enter a valid email.' }

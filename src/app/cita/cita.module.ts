@@ -8,11 +8,16 @@ import { CitaPageRoutingModule } from './cita-routing.module';
 
 import { CitaPage } from './cita.page';
 
+import { NgCalendarModule  } from 'ionic2-calendar';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+
+    NgCalendarModule,
+    
     CitaPageRoutingModule
   ],
   declarations: [CitaPage]

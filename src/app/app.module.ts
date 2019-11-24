@@ -12,12 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase'
 
+import { NgCalendarModule  } from 'ionic2-calendar';
+
 firebase.initializeApp(environment.firebaseConfig)
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgCalendarModule],
   providers: [
     StatusBar,
     SplashScreen,
