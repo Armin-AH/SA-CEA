@@ -19,10 +19,16 @@ export class CitaPage implements OnInit {
   fecha: string;
   nombre: string;
   id = '';
-  listadoCita: JSON[];
   registrar = false; 
   Editar: boolean = false;
   selectedItem;
+
+  listadoCita: JSON[];
+  listadoCitaStr;
+  listadoCitaObj: [];
+
+  listadoActual: JSON[];
+  listadoActuaObj: [];
 
   constructor(private BD:BDService, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
   //constructor(private BD:BDService) { }
@@ -58,17 +64,21 @@ export class CitaPage implements OnInit {
     this.hoy = new Date().getFullYear();
     this.BD.listadoCita();
     this.listadoCita = this.BD.listadocita;
+    
+    console.log(this.listadoCita);
+    console.log(this.listadoCita[1]);
 
-    console.log(this.listadoCita)
-    this.listadoCita.forEach(ss=>{
-      
-    })
+    this.listadoCitaStr = JSON.stringify(this.listadoCita);
+    this.listadoCitaObj = JSON.parse(this.listadoCitaStr);
+
+    //console.log(this.listadoCitaStr)
+    
 
   }
 
   borrar(ID: string) {
     this.BD.deleteCita(ID);
-    console.log(this.listadocita);
+    //console.log(this.listadocita);
     this.listadocita();
 
     this.nombre = ''
@@ -82,7 +92,7 @@ export class CitaPage implements OnInit {
   editar(ID: string) {
     this.BD.updateCita(ID, this.nombre, this.fecha, this.carrera, this.motivo, this.notas);
     this.Editar = false;
-    console.log(this.listadoCita);
+    //console.log(this.listadoCita);
     this.listadocita();
     this.nombre = '';
     this.fecha = '';
@@ -125,8 +135,8 @@ export class CitaPage implements OnInit {
   }
 
   onCurrentDateChanged = (ev: Date) => {
-    console.log(ev);
-    console.log(typeof ev)
+    //console.log(ev);
+    //console.log(typeof ev)
   };
 
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
