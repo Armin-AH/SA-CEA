@@ -66,12 +66,14 @@
     (onTitleChanged)="onViewTitleChanged($event)"
     (onTimeSelected)="onTimeSelected($event)"
     (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    [showEventDetail] = "false"
     >
     </calendar>
 
 <!--/////////////////////////////////////////////CALENDARIO//////////////////////////////////////////-->
 
 <!--/////////////////////////////////////////////LISTA CITAS//////////////////////////////////////////-->
+<div id = "contenedorLista">
   <section class="content-section container">
   <h2 class="section-header">Lista de Citas</h2>
   </section>
@@ -129,6 +131,7 @@
     <div class="text-center" *ngIf="listadoCita && listadoCita.length === 0">
       No se encontraron citas para la fecha seleccionada
     </div>
+  </div>
 
 
 <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////
