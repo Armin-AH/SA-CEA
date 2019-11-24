@@ -63,11 +63,9 @@
     [currentDate]="calendar.currentDate"
     (onEventSelected)="onEventSelected($event)"
     (onTitleChanged)="onViewTitleChanged($event)"
-    (onTimeSelected)="onTimeSelected($event)" 
-    startHour="8"
-    endHour="16"
-    step="60"
-    startingDayWeek="1">
+    (onTimeSelected)="onTimeSelected($event)"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    >
     </calendar>
 
 <!--/////////////////////////////////////////////CALENDARIO//////////////////////////////////////////-->

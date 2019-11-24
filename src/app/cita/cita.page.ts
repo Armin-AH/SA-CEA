@@ -87,6 +87,10 @@ export class CitaPage implements OnInit {
 
   }
 
+  onCurrentChanged = (ev: Date) => {
+    console.log('Currently viewed date: ' + ev);
+  };
+
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
 
 }
