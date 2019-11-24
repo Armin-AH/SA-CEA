@@ -18,7 +18,7 @@ export class bitacoraPage implements OnInit {
   fecha: string;
   nombre: string;
   id = '';
-  listadoBitacora: JSON[];
+  listadoBitacora: any[];
   registrar: boolean = false;
   Editar: boolean = false;
   selectedItem;

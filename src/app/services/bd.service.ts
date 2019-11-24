@@ -5,8 +5,8 @@ import * as firebase from 'firebase'
   providedIn: 'root'
 })
 export class BDService {
-  listadobitacora: JSON[] = [];
-  listadocita: JSON[] = [];
+  listadobitacora: any[] = [];
+  listadocita: any[] = [];
 
   constructor() { }
 
@@ -44,11 +44,11 @@ export class BDService {
   }
 
   listadoBitacora(){
-     firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
-       ss.forEach(aa=>{
-         this.listadobitacora.push(aa.val())
-       })
-     })
+    firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
+      ss.forEach(aa=>{
+        this.listadobitacora.push(aa.val())
+      })
+    })
   }
 
   updateBitacora(id,nombre,fecha,matricula,carrera,motivo){
@@ -69,9 +69,9 @@ export class BDService {
   }
 
   listadoCita() {
-    firebase.database().ref().child('Cita').orderByChild('Fecha').once('value', ss =>{
-      ss.forEach(aa=>{
-        this.listadocita.push(aa.val())
+    return firebase.database().ref().child('Cita').orderByChild('Fecha').once('value', ss =>{
+      ss.forEach(aa => {
+        this.listadocita.push(aa.val());
       });
     });
   }

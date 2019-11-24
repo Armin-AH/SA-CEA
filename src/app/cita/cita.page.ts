@@ -19,25 +19,29 @@ export class CitaPage implements OnInit {
   fecha: string;
   nombre: string;
   id = '';
-  registrar = false; 
+  registrar = false;
   Editar: boolean = false;
   selectedItem;
 
-  listadoCita: JSON[];
+  listadoCita: any[];
   listadoCitaStr;
   listadoCitaObj: [];
 
-  listadoActual: JSON[];
+  listadoActual: any[];
   listadoActuaObj: [];
 
-  constructor(private BD:BDService, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
+  selectedDate: Date = new Date();
+
+  constructor(
+    private BD: BDService,
+    private alertCtrl: AlertController,
+    @Inject(LOCALE_ID) private locale: string,
+  ) { }
   //constructor(private BD:BDService) { }
 
 //////////////////////////////////////////////CRUD CITAS////////////////////////////////////////////////
   ngOnInit() {
     this.listadocita()
-
-    
   }
 
   guardar() {
@@ -62,18 +66,36 @@ export class CitaPage implements OnInit {
   listadocita() {
     this.BD.listadocita = [];
     this.hoy = new Date().getFullYear();
-    this.BD.listadoCita();
-    this.listadoCita = this.BD.listadocita;
-    
-    console.log(this.listadoCita);
-    console.log(this.listadoCita[1]);
+    console.log('listado cita()')
+    this.BD.listadoCita().then(() => {
+      this.listadoCita = this.BD.listadocita;
 
-    this.listadoCitaStr = JSON.stringify(this.listadoCita);
-    this.listadoCitaObj = JSON.parse(this.listadoCitaStr);
+      this.listadoCita = this.listadoCita.filter((cita) => {
+        const citaFecha = new Date(cita.Fecha);
+        const citaFechaAnio = citaFecha.getFullYear();
+        const citaFechaMes = citaFecha.getMonth() + 1;
+        const citaFechaDia = citaFecha.getDate();
 
+        if (this.selectedDate) {
+          const selectedDateYear = this.selectedDate.getFullYear();
+          const selectedDateMonth = this.selectedDate.getMonth() + 1;
+          const selectedDateDay = this.selectedDate.getDate();
+
+          return citaFechaAnio === selectedDateYear &&
+            citaFechaMes === selectedDateMonth &&
+            citaFechaDia === selectedDateDay;
+        } else {
+          return true;
+        }
+      });
+
+      console.log(this.listadoCita);
+      console.log(this.listadoCita[1]);
+
+      this.listadoCitaStr = JSON.stringify(this.listadoCita);
+      this.listadoCitaObj = JSON.parse(this.listadoCitaStr);
+    });
     //console.log(this.listadoCitaStr)
-    
-
   }
 
   borrar(ID: string) {
@@ -108,11 +130,11 @@ export class CitaPage implements OnInit {
   //////////////////////////////////////////////CRUD CITAS////////////////////////////////////////////////
 
   //////////////////////////////////////////////CALENDARIO////////////////////////////////////////////////
-  
+
   event = {
     fecha: '',
   }
-  
+
   eventSource = [];
 
   viewTitle;
@@ -123,7 +145,7 @@ export class CitaPage implements OnInit {
   }
 
   onEventSelected() {
-    
+
   }
 
   onViewTitleChanged(nombre) {
@@ -135,6 +157,9 @@ export class CitaPage implements OnInit {
   }
 
   onCurrentDateChanged = (ev: Date) => {
+    console.log(ev);
+    this.selectedDate = ev;
+    this.listadocita();
     //console.log(ev);
     //console.log(typeof ev)
   };

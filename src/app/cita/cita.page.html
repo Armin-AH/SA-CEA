@@ -18,7 +18,7 @@
     <ion-button (click)="registrarCita()" color="success">Registrar</ion-button>
     </ion-col>
     </ion-row>
-  
+
 <div *ngIf="registrar">
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
@@ -58,9 +58,9 @@
         </ion-title>
       </ion-col>
       <!---->
-    <calendar 
+    <calendar
     [eventSource]="eventSource"
-    [calendarMode]="calendar.mode" 
+    [calendarMode]="calendar.mode"
     [currentDate]="calendar.currentDate"
     (onEventSelected)="onEventSelected($event)"
     (onTitleChanged)="onViewTitleChanged($event)"
@@ -76,7 +76,7 @@
   <h2 class="section-header">Lista de Citas</h2>
   </section>
 
-    <div class="content-section container-lista">
+    <div class="content-section container-lista" *ngIf="listadoCita && listadoCita.length > 0">
       <ion-item color="secondary">
         <ion-label>Nombre</ion-label>
         <ion-label>Fecha</ion-label>
@@ -114,7 +114,7 @@
             <ion-label position="floating">Notas</ion-label>
             <ion-input [(ngModel)]="notas" type="text"></ion-input>
           </ion-item>
-  
+
           <ion-row>
             <ion-col width-50 style="text-align: center">
               <ion-button (click)="editar(item.ID)" color="primary">Guardar</ion-button>
@@ -125,6 +125,9 @@
         <ion-button (click)="borrar(item.ID)" color="danger">Borrar</ion-button>
       </ion-label>
       </ion-item>
+    </div>
+    <div class="text-center" *ngIf="listadoCita && listadoCita.length === 0">
+      No se encontraron citas para la fecha seleccionada
     </div>
 
 
