@@ -1,11 +1,13 @@
+
+<ion-content>
+  <!--/////////////////////////////////////////////HEADER///////////////////////////////////////////////-->
 <ion-header class="main-header">
-  <h1 class="title-name title-name-large">CEA</h1>
-</ion-header>
+    <h1 class="title-name title-name-large">CEA</h1>
+  </ion-header>
+  <!--/////////////////////////////////////////////HEADER///////////////////////////////////////////////-->
+  
 
-
-<ion-content class="ion-padding" >
-
-  <div id = "division">
+  <div id = "division" class="ion-padding">
     <ion-img id = 'uacjlogo' src="../assets/uacj-logo.png"></ion-img>
 
     <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)" >
@@ -46,5 +48,19 @@
           <label  class="error-message">{{errorMessage}}</label>
         </div>
   </form>
-    </div>
+  </div>
+
+
+    
+  <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
+    <ion-footer class="main-footer">
+      <div class="container">
+        <address>
+          Email:	  al000000@alumnos.uacj.mx<br>
+          Telefono:  65600000000<br>
+          Pagina:	  http://www.uacj.mx
+        </address>
+      </div>
+  </ion-footer>
+  <!--////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////-->
 </ion-content>

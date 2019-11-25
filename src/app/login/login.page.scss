@@ -2,21 +2,13 @@
 ////////////////////////////////////////////HEADER//////////////////////////////////////////////////////
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 
-.main-header {
-    background-color: rgba(231, 76, 60);
-    background-blend-mode: multiply;
-    background-size: cover;
-    padding-bottom: 30px;
-
-}
-
 .title-name {
     text-align: center;
     margin: 0;
     font-size: 4em;
     font-family: Titillium Web;
     font-weight: normal;
-    color:white;
+    color:#114C90;
 }
 
 .title-name-large {
@@ -37,3 +29,23 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5em;
+}
+
+.main-footer{
+	position: relative;
+	clear: both;
+    background:#114C90;
+    margin-top: 12.16%;
+}
+
+.main-footer address{
+    text-align: center;
+    color:#FFF;
+}
+////////////////////////////////////////////FOOTER//////////////////////////////////////////////////////
