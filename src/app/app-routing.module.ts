@@ -8,10 +8,9 @@ const routes: Routes = [
   { path: 'cita', loadChildren: () => import('./cita/cita.module').then( m => m.CitaPageModule) },
   { path: 'reporte', loadChildren: () => import('./reporte/reporte.module').then( m => m.ReportePageModule) },
   { path: 'bitacora', loadChildren: () => import('./bitacora/bitacora.module').then( m => m.bitacoraPageModule) },
-  {
-    path: 'usuarios',
-    loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
-  },
+  { path: 'usuarios', loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule) },
+ 
+
 
 
 

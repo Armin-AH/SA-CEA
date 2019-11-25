@@ -46,19 +46,6 @@ export class bitacoraPage implements OnInit {
   constructor(private BD: BDService,private formBuilder: FormBuilder, private navCtrl: NavController,) { }
 
   ngOnInit() {
-
-    /*this.validation_form = this.formBuilder.group({
-      nombre: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('[a-zA-Z]'),
-      ])),
-      matricula: new FormControl('', Validators.compose([
-        Validators.maxLength(6),
-        Validators.pattern('[0-9]'),
-        Validators.required
-      ])),
-    });*/
-
     console.log(this.listadoBitacora);
     this.listadobitacora();
   }
