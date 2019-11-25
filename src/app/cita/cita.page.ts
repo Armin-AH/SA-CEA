@@ -83,14 +83,7 @@ export class CitaPage implements OnInit {
           return true;
         }
       });
-
-      console.log(this.listadoCita);
-      console.log(this.listadoCita[1]);
-
-      this.listadoCitaStr = JSON.stringify(this.listadoCita);
-      this.listadoCitaObj = JSON.parse(this.listadoCitaStr);
     });
-    //console.log(this.listadoCitaStr)
   }
 
   listadoCitaTotal(){

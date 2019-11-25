@@ -44,7 +44,7 @@ export class BDService {
   }
 
   listadoBitacora(){
-    firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
+    return firebase.database().ref().child('Bitacora').orderByChild('Fecha').once('value',ss=>{
       ss.forEach(aa=>{
         this.listadobitacora.push(aa.val())
       })
